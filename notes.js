@@ -11,7 +11,7 @@ const notes = (title, body) => {
      const duplicatData = note.filter((note) => {
          return note.title === title
      })
-     console.log(duplicatData)
+    // console.log(duplicatData)
      if(duplicatData.length === 0) {
          note.push({
              title: title,
@@ -56,8 +56,15 @@ const loadNotes = () => {
 }
 
 const listNotes = () => {
-    const notes = loadNotes();     
-    notes.length !== 0 ? console.log(chalk.yellow.inverse('your notes:'),notes) : console.log('no notes found')
+    const notes = loadNotes();  
+    if(notes.length !== 0) {   
+ console.log(chalk.yellow.inverse('your notes:'));
+    notes.forEach(note => {
+       console.log(note.title)
+    }) 
+}  else {
+        console.log('no notes found')
+}
 }
 
 const readNotes = (title) => {
